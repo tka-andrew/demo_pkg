@@ -1,0 +1,3 @@
+<launch>
+    <test test-name="test_io_listener" pkg="demo_pkg" type="test_io_listener.py"/>
+</launch>
