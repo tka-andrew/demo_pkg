@@ -50,7 +50,7 @@ int main(int argc, char **argv)
   srv.request.b = atoll(argv[2]);
   if (client.call(srv))
   {
-    ROS_INFO("Sum: %ld", (int)srv.response.sum);
+    ROS_INFO("Sum: %d", (int)srv.response.sum);
   }
   else
   {

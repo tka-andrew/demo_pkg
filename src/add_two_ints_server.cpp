@@ -32,8 +32,8 @@ bool add(demo_pkg::AddTwoInts::Request &req,
          demo_pkg::AddTwoInts::Response &res)
 {
   res.sum = req.a + req.b;
-  ROS_INFO("request: x=%ld, y=%ld", (int)req.a, (int)req.b);
-  ROS_INFO("sending back response: [%ld]", (int)res.sum);
+  ROS_INFO("request: x=%d, y=%d", (int)req.a, (int)req.b);
+  ROS_INFO("sending back response: [%d]", (int)res.sum);
   return true;
 }
 
