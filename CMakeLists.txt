@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  roslint
 )
 
 ## System dependencies are found with CMake's conventions
@@ -224,3 +225,6 @@ catkin_install_python(PROGRAMS
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+roslint_cpp()
+roslint_python()
