@@ -34,14 +34,15 @@
 #
 # Revision $Id$
 
-## Simple demo of a rospy service client that calls a service to add
-## two integers. 
+# Simple demo of a rospy service client that calls a service to add
+# two integers.
 
 from __future__ import print_function
 
 import sys
 import rospy
 from demo_pkg.srv import *
+
 
 def add_two_ints_client(x, y):
     rospy.wait_for_service('add_two_ints')
@@ -50,10 +51,12 @@ def add_two_ints_client(x, y):
         resp1 = add_two_ints(x, y)
         return resp1.sum
     except rospy.ServiceException as e:
-        print("Service call failed: %s"%e)
+        print("Service call failed: %s" % e)
+
 
 def usage():
-    return "%s [x y]"%sys.argv[0]
+    return "%s [x y]" % sys.argv[0]
+
 
 if __name__ == "__main__":
     if len(sys.argv) == 3:
@@ -62,5 +65,5 @@ if __name__ == "__main__":
     else:
         print(usage())
         sys.exit(1)
-    print("Requesting %s+%s"%(x, y))
-    print("%s + %s = %s"%(x, y, add_two_ints_client(x, y)))
+    print("Requesting %s+%s" % (x, y))
+    print("%s + %s = %s" % (x, y, add_two_ints_client(x, y)))

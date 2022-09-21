@@ -33,7 +33,8 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "add_two_ints_client");
   std::cout << "Have " << argc << " arguments:" << std::endl;
-  for (int i = 0; i < argc; ++i) {
+  for (int i = 0; i < argc; ++i)
+  {
     std::cout << argv[i] << std::endl;
   }
   if (argc != 3)
@@ -49,7 +50,7 @@ int main(int argc, char **argv)
   srv.request.b = atoll(argv[2]);
   if (client.call(srv))
   {
-    ROS_INFO("Sum: %ld", (long int)srv.response.sum);
+    ROS_INFO("Sum: %ld", (int)srv.response.sum);
   }
   else
   {

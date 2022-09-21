@@ -28,12 +28,12 @@
 #include "ros/ros.h"
 #include "demo_pkg/AddTwoInts.h"
 
-bool add(demo_pkg::AddTwoInts::Request  &req,
+bool add(demo_pkg::AddTwoInts::Request &req,
          demo_pkg::AddTwoInts::Response &res)
 {
   res.sum = req.a + req.b;
-  ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
-  ROS_INFO("sending back response: [%ld]", (long int)res.sum);
+  ROS_INFO("request: x=%ld, y=%ld", (int)req.a, (int)req.b);
+  ROS_INFO("sending back response: [%ld]", (int)res.sum);
   return true;
 }
 
