@@ -4,12 +4,13 @@ from std_msgs.msg import UInt16
 
 class IoListener():
     def __init__(self):
-        self._inputs = [0, 0, 0, 0, 0, 0, 0, 0]
-        self._outputs = [0, 0, 0, 0, 0, 0, 0, 0]
-        self.input_subs = [rospy.Subscriber(
-            'io/input/port%d' % (i), UInt16, self.input_callback, i, queue_size=10) for i in range(1, 9)]
-        self.output_subs = [rospy.Subscriber(
-            'io/output/port%d' % (i), UInt16, self.output_callback, i, queue_size=10) for i in range(1, 9)]
+        self.num_of_ports = 8
+        self._inputs = [0 for i in range(self.num_of_ports)]
+        self._outputs = [0 for i in range(self.num_of_ports)]
+        self.input_subs = [rospy.Subscriber('io/input/port%d' % (i), UInt16, self.input_callback, i,
+                                            queue_size=10) for i in range(1, self.num_of_ports + 1)]
+        self.output_subs = [rospy.Subscriber('io/output/port%d' % (i), UInt16, self.output_callback, i,
+                                             queue_size=10) for i in range(1, self.num_of_ports + 1)]
 
     def input_callback(self, msg, port):
         self._inputs[port-1] = msg.data
@@ -18,8 +19,8 @@ class IoListener():
         self._outputs[port-1] = msg.data
 
     def reset_inputs_outputs(self):
-        self._inputs = [0, 0, 0, 0, 0, 0, 0, 0]
-        self._outputs = [0, 0, 0, 0, 0, 0, 0, 0]
+        self._inputs = [0 for i in range(self.num_of_ports)]
+        self._outputs = [0 for i in range(self.num_of_ports)]
 
     def get_inputs(self):
         return self._inputs
